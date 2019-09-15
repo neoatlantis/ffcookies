@@ -1,0 +1,44 @@
+<html>
+<head>
+<style>
+#preview{
+    width: 80%;
+    height: 20em;
+    font-family: monospace;
+}
+#password{
+    font-family: monospace;
+    font-size: 2em;
+    padding: 0.5em;
+    width: 20em;
+}
+button {
+    font-size: 1em;
+}
+#fileio{
+    font-family: monospace;
+    font-size: 2em;
+}
+</style>
+</head>
+<body>
+<div>
+Your cookies are exported and encrypted as below:
+</div>
+<textarea id="preview" readonly="1"> </textarea>
+<p>
+<div>
+It's encrypted with password:
+</div>
+<input type="text" readonly="1" id="password" />
+<p>
+<div id="fileio">
+<button id="fileio-btn">Click here to transfer via FileIO</button>
+</div>
+
+<script src="jquery.js"></script>
+<script src="base32.js"></script>
+<script src="openpgp.js"></script>
+<script src="export.js"></script>
+</body>
+</html>

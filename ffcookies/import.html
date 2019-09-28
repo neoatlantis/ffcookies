@@ -1,0 +1,52 @@
+<html>
+<head>
+<style>
+#preview{
+    width: 80%;
+    height: 10em;
+    font-family: monospace;
+}
+#password{
+    font-family: monospace;
+    font-size: 2em;
+    padding: 0.5em;
+    width: 20em;
+}
+#fileioid{
+    font-family: monospace;
+    font-size: 1em;
+    width: 6em;
+}
+button {
+    font-size: 1em;
+}
+#fileio{
+    font-family: monospace;
+    font-size: 2em;
+}
+</style>
+<script src="jquery.js"></script>
+<script src="openpgp.js"></script>
+<script src="import.js"></script>
+</head>
+<body>
+
+<div>Load exported cookies from fileio:</div>
+<div id="fileio">
+https://file.io/<input type="text" id="fileioid" />
+<button id="loadfile" type="button" style="font-size: 0.6em">Go!</button>
+</div>
+
+<p>
+<textarea id="preview"></textarea>
+
+<p>
+Input the password for decrypt:<br /> <input type="text" id="password" />
+
+<p>
+<div><button id="loadcookies-existing">Load cookies for only existing websites.</button></div>
+<div><button id="loadcookies-all">Load all cookies and overwrite existing data.</button></div>
+<div><button id="loadcookies-clear">Truncate browser cookies and replace with new entries.</button></div>
+
+</body>
+</html>

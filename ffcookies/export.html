@@ -2,23 +2,34 @@
 <head>
 <style>
 #preview{
-    width: 80%;
-    height: 20em;
+    width: 90%;
+    max-width: 40em;
+    height: 10em;
     font-family: monospace;
 }
 #password{
     font-family: monospace;
-    font-size: 2em;
-    padding: 0.5em;
-    width: 20em;
-}
-button {
     font-size: 1em;
+    padding: 0.5em;
+    width: 26em;
+    text-align: center;
 }
 #fileio{
     font-family: monospace;
-    font-size: 2em;
 }
+#qrcode-page{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #FFFFFF;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30%;
+    display: none;
+}
+#qrcode{ display: none; }
 </style>
 </head>
 <body>
@@ -33,12 +44,22 @@ It's encrypted with password:
 <input type="text" readonly="1" id="password" />
 <p>
 <div id="fileio">
-<button id="fileio-btn">Click here to transfer via FileIO</button>
+<div id="fileio-url"></div>
+<button id="fileio-btn">Transfer via FileIO and get QR code</button>
+</div>
+
+<div id="qrcode-page">
+    <div style="padding-top: 3%; text-align: center">
+        Open the ffcookies extension on another computer's Firefox.<br />
+        Select import, and scan this code. Click to close display.
+    </div>
+    <div id="qrcode"></div>
 </div>
 
 <script src="jquery.js"></script>
 <script src="base32.js"></script>
 <script src="openpgp.js"></script>
+<script src="qrcode.js"></script>
 <script src="export.js"></script>
 </body>
 </html>

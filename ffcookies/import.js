@@ -73,7 +73,7 @@ async function load(existingOnly, truncateCookies){
         return;
     }
 
-    console.debug("import", data);
+    //console.debug("import", data);
 
     const existingCookies = await browser.cookies.getAll({});
     var existingURLs = [];
@@ -108,7 +108,7 @@ async function load(existingOnly, truncateCookies){
     }
 
     count = 0;
-    writingCookies.forEach(function(cookie){
+    writingCookies.forEach(async function(cookie){
         count += 1;
         const toSet = {
             domain: cookie.domain,
@@ -123,8 +123,12 @@ async function load(existingOnly, truncateCookies){
             storeId: cookie.storeId,
             value: cookie.value,
         };
-        console.log(toSet);
-        browser.cookies.set(toSet);
+        console.log("setting", toSet);
+        try{
+            await browser.cookies.set(toSet);
+        } catch(e){
+            console.error(toSet, e);
+        }
     });
 
     alert("Success. " + count + " cookies set.");

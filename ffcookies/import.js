@@ -127,9 +127,7 @@ async function load(existingOnly, truncateCookies){
         browser.cookies.set(toSet);
     });
 
-    console.log(count + " cookies set.", writingCookies);
-
-    //alert(count + " cookies set.");
+    alert("Success. " + count + " cookies set.");
     
 
 }

@@ -1,16 +1,14 @@
 <html>
 <head>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+
 <style>
 #preview{
-    width: 90%;
-    max-width: 40em;
     height: 10em;
     font-family: monospace;
 }
 #password{
     font-family: monospace;
-    font-size: 1em;
-    padding: 0.5em;
     width: 26em;
     text-align: center;
 }
@@ -28,25 +26,46 @@
     background-position: center;
     background-size: 30%;
     display: none;
+    z-index: 10000;
 }
 #qrcode{ display: none; }
 </style>
 </head>
-<body>
+<body><div class="container">
+
+<div style="height: 2em;"></div>
+
+<div class="card">
+    <div class="card-header">
+        Your cookies are exported and encrypted.
+    </div>
+
+    <div class="card-body">
+
+
+        <div class="form-group">
+            <label for="preview">Encrypted cookies dump:</label>
+            <textarea class="form-control" id="preview" readonly="1"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="password">It's encrypted with password:</label>
+            <input class="form-control" type="text" readonly="1" id="password" />
+        </div>
+
+        <div id="fileio" class="input-group mb-2 mr-sm-2">
+            <input class="form-control" type="text" readonly="1" id="fileio-url" placeholder="URL at file.io is displayed here after being uploaded ->" />
+            <div class="input-group-append">
+                <button id="fileio-btn" class="btn btn-primary" disabled="1">Transfer via FileIO and get QR code</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
 <div>
-Your cookies are exported and encrypted as below:
-</div>
-<textarea id="preview" readonly="1"> </textarea>
 <p>
-<div>
-It's encrypted with password:
-</div>
-<input type="text" readonly="1" id="password" />
-<p>
-<div id="fileio">
-<div id="fileio-url"></div>
-<button id="fileio-btn">Transfer via FileIO and get QR code</button>
-</div>
 
 <div id="qrcode-page">
     <div style="padding-top: 3%; text-align: center">
@@ -61,5 +80,6 @@ It's encrypted with password:
 <script src="openpgp.js"></script>
 <script src="qrcode.js"></script>
 <script src="export.js"></script>
-</body>
+
+</div></body>
 </html>

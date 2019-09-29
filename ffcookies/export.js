@@ -23,7 +23,7 @@ function writeQRCode(fileioID, password){
 
 
 (async function work(){
-   $("#password").val("");
+   $("input,textarea").val("");
 
     await openpgp.initWorker({ path: "/openpgp.worker.js" });
 
@@ -39,10 +39,14 @@ function writeQRCode(fileioID, password){
         compression: openpgp.enums.compression.zip,
     })).data;
 
-    $("#preview").text(ciphertext);
+    $("#preview").val(ciphertext);
     $("#password").val(displayPassword(password));
 
-    $("#fileio-btn").data("ciphertext", ciphertext).data("password", password);
+    $("#fileio-btn")
+        .attr("disabled", false)
+        .data("ciphertext", ciphertext)
+        .data("password", password)
+    ;
 })();
 
 
@@ -62,7 +66,7 @@ $("#fileio-btn").click(function(){
         data: { text: ciphertext },
     }).done(function (d) {
         //Do what you want with the return data
-        $("#fileio-url").text(d.link);
+        $("#fileio-url").val(d.link);
         writeQRCode(d.link.slice(-6), password);
         $(self).data("uploaded", true);
     })

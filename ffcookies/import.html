@@ -1,21 +1,18 @@
 <html>
 <head>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
 <style>
 #preview{
-    width: 80%;
     height: 10em;
     font-family: monospace;
 }
 #password{
     font-family: monospace;
-    font-size: 2em;
-    padding: 0.5em;
     width: 20em;
+    width: 100%;
 }
 #fileioid{
     font-family: monospace;
-    font-size: 1em;
-    width: 6em;
 }
 button {
     font-size: 1em;
@@ -29,24 +26,77 @@ button {
 <script src="openpgp.js"></script>
 <script src="import.js"></script>
 </head>
-<body>
+<body><div class="container">
 
-<div>Load exported cookies from fileio:</div>
-<div id="fileio">
-https://file.io/<input type="text" id="fileioid" />
-<button id="loadfile" type="button" style="font-size: 0.6em">Go!</button>
-</div>
 
-<p>
-<textarea id="preview"></textarea>
+<div style="height: 2em;"></div>
 
-<p>
-Input the password for decrypt:<br /> <input type="text" id="password" />
+<div class="card">
+    <div class="card-header">
+        Load exported cookies.
+    </div>
 
-<p>
-<div><button id="loadcookies-existing">Load cookies for only existing websites.</button></div>
-<div><button id="loadcookies-all">Load all cookies and overwrite existing data.</button></div>
-<div><button id="loadcookies-clear">Truncate browser cookies and replace with new entries.</button></div>
 
-</body>
+    <div class="card-body">
+
+        <div id="fileio" class="input-group mb-2 mr-sm-2">
+            
+            <div class="input-group-prepend">
+                <div class="input-group-text">https://file.io/</div>
+            </div>
+            <input class="form-control" type="text" id="fileioid" />
+            <div class="input-group-append">
+                <button id="loadfile" type="button" class="btn btn-primary">
+                Download dumped cookies from file.io
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="preview">Encrypted cookies dump:</label>
+            <textarea class="form-control" id="preview"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Input the password for decrypt:</label>
+            <input class="form-control" type="text" id="password" />
+        </div>
+
+    </div>
+
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <button id="loadcookies-existing" class="btn btn-secondary">
+                Load cookies for only existing entries.
+            </button>
+            <small class="form-text text-muted">
+                Only existing cookies on your web browser will be replaced
+                with new values.
+            </small>
+        </li>
+        <li class="list-group-item">
+            <button id="loadcookies-all" class="btn btn-secondary">
+                Load all cookies and overwrite existing data.
+            </button>
+            <small class="form-text text-muted">
+                All cookies downloaded will be added to your browser.
+                If any cookie exists, it will be replaced. However, anything
+                already stored in your browser but not found in downloaded
+                data will be also preserved.
+            </small>
+        </li>
+        <li class="list-group-item">
+            <button id="loadcookies-clear" class="btn btn-danger">
+                Truncate browser cookies and replace with new entries.
+            </button>
+            <small class="form-text text-muted">
+                Your browser's cookies will be completely removed and replaced
+                with downloaded data.
+            </small>
+        </li>
+    </div>
+
+    <div style="height: 5em;"></div>
+
+</div></body>
 </html>

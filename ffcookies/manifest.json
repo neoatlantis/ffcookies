@@ -14,6 +14,10 @@
             "background.js"
         ]
     },
+    "icons": {
+        "96": "icon.svg", 
+        "48": "icon.svg" 
+    },
     "browser_action": {
         "default_title": "ffcookies: Firefox cookies migration tool.",
         "default_popup": "browser_action.html"
